@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.util.List;
 
@@ -55,6 +56,17 @@ public class NoteServiceTests {
     }
 
     @Test
+    public void testGetNoteByNotExistIdWorksOk(){
+        Note note = new Note();
+        note.setTitle("Created Title");
+        note.setContent("Created Content");
+
+        noteService.add(note);
+
+        Assertions.assertThrows(NullPointerException.class, () -> noteService.getById(10000L));
+    }
+
+    @Test
     public void testGetAllNotesWorksOk(){
         List<Note> notes = noteService.listAll();
 
@@ -96,7 +108,7 @@ public class NoteServiceTests {
         Note noteToDelete = noteService.add(note);
 
         noteService.deleteById(noteToDelete.getId());
-        Note result = noteService.getById(noteToDelete.getId());
-        Assertions.assertNull(result);
+
+        Assertions.assertThrows(NullPointerException.class, () -> noteService.getById(noteToDelete.getId()));
     }
 }

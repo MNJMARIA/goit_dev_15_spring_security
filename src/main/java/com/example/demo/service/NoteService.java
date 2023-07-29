@@ -3,10 +3,7 @@ package com.example.demo.service;
 import com.example.demo.entity.Note;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class NoteService implements INoteService {
@@ -15,7 +12,7 @@ public class NoteService implements INoteService {
     @Override
     public Note add(Note note) {
         // Generate a unique long value using UUID
-        long id = UUID.randomUUID().getLeastSignificantBits();
+        long id = new Random().nextLong();
         note.setId(id);
         mapOfNotes.put(id, note);
         return note; // Return the added note instead of the return value of put()
@@ -24,10 +21,10 @@ public class NoteService implements INoteService {
     @Override
     public Note getById(long id) {
         if(mapOfNotes.containsKey(id)){
-            return mapOfNotes.get(id);
+            Note note = mapOfNotes.get(id);
+            return note;
         } else {
-            return null;
-            //throw new RuntimeException("Not found!");
+            throw new NullPointerException("Not found!");
         }
     }
 
@@ -41,7 +38,7 @@ public class NoteService implements INoteService {
         if(mapOfNotes.containsKey(note.getId())){
             mapOfNotes.put(note.getId(), note);
         } else {
-            throw new RuntimeException("Not found!");
+            throw new NullPointerException("Not found!");
         }
     }
 
@@ -50,7 +47,7 @@ public class NoteService implements INoteService {
         if(mapOfNotes.containsKey(id)){
             mapOfNotes.remove(id);
         } else {
-            throw new RuntimeException("Not found!");
+            throw new NullPointerException("Not found!");
         }
     }
 }
