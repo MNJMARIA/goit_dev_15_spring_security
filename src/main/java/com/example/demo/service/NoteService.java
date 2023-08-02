@@ -1,10 +1,14 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Note;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@RequiredArgsConstructor
+@Data
 @Service
 public class NoteService implements INoteService {
     private Map<Long, Note> mapOfNotes = new HashMap<>();
