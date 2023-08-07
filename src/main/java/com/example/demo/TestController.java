@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class TestController {
     @GetMapping(value = "/test")
     public ModelAndView getTest(){
-        ModelAndView result = new ModelAndView();
-        result.addObject("test");
+        ModelAndView result = new ModelAndView("test");// Вказуємо назву шаблону без розширення
+        result.addObject("test", "Hello from TestController"); // Додаємо дані в модель
         return result;
     }
 }
