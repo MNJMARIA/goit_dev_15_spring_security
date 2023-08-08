@@ -1,12 +1,10 @@
-package com.example.demo;
+package com.example;
 
-import com.example.demo.entity.Note;
-import com.example.demo.service.NoteService;
+import com.example.entity.Note;
+import com.example.service.NoteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/note")

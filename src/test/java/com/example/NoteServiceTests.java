@@ -1,12 +1,11 @@
-package com.example.demo;
+package com.example;
 
-import com.example.demo.entity.Note;
-import com.example.demo.service.NoteService;
+import com.example.entity.Note;
+import com.example.service.NoteService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package com.example.service;
 
-import com.example.demo.entity.Note;
+import com.example.entity.Note;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
