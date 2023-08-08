@@ -37,12 +37,6 @@ public class NoteController {
         return noteService.getById(id);
     }
 
-    /*@PostMapping(value = "/edit")
-    public ModelAndView editNote(){
-        ModelAndView result = new ModelAndView();
-        result.addObject("test");
-        return result;
-    }*/
     @PostMapping("/edit")
     public void editNote(@RequestBody  Note note){
         noteService.update(note);
