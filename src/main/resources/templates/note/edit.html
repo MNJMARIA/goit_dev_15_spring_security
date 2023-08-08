@@ -11,12 +11,21 @@
     <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">-->
 </head>
 <body>
-<h1>Edit Note</h1>
-<form th:action="@{/note/edit}" method="post" th:object="${note}">
-    <input type="hidden" th:field="*{id}">
-    Title: <input type="text" th:field="*{title}"><br>
-    Content: <textarea th:field="*{content}"></textarea><br>
-    <input type="submit" value="Save">
-</form>
+<div class="container">
+    <h1>Edit Note</h1>
+    <form action="/note/edit" method="post">
+        <!-- Hidden input for note ID -->
+        <input type="hidden" name="id" value="${note.id}">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="title" value="${note.title}">
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea class="form-control" id="content" name="content">${note.content}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
 </body>
 </html>

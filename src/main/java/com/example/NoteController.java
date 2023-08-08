@@ -2,20 +2,28 @@ package com.example;
 
 import com.example.entity.Note;
 import com.example.service.NoteService;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+import java.util.List;
+
+@RequiredArgsConstructor
+@RestController
 @RequestMapping("/note")
 public class NoteController {
-    NoteService noteService = new NoteService();
+    private static final Logger logger = LoggerFactory.getLogger(NoteService.class);
+    private final  NoteService noteService;
 
     @GetMapping(value = "/list")
-    public ModelAndView getListOfNotes(){
-        ModelAndView result = new ModelAndView("note/list");
-        result.addObject("list", noteService.listAll()); // Передача списку нотаток в модель
-        return result;
+    public List<Note> getListOfNotes(){
+        /*ModelAndView result = new ModelAndView("note/list");
+        result.addObject("list", ); // Передача списку нотаток в модель
+        return result;*/
+        return noteService.listAll();
     }
 
     @PostMapping(value = "/delete")
@@ -25,11 +33,8 @@ public class NoteController {
     }
 
     @GetMapping(value = "/edit")
-    public ModelAndView editNote(@RequestParam(name = "id") int id){
-        ModelAndView result = new ModelAndView("edit");
-        Note note = noteService.getById(id);
-        result.addObject("note", note);
-        return result;
+    public Note editNote(@RequestParam(name = "id") int id){
+        return noteService.getById(id);
     }
 
     /*@PostMapping(value = "/edit")
@@ -39,8 +44,7 @@ public class NoteController {
         return result;
     }*/
     @PostMapping("/edit")
-    public String editNote(@ModelAttribute Note note){
+    public void editNote(@RequestBody  Note note){
         noteService.update(note);
-        return "redirect:/note/list";
     }
 }

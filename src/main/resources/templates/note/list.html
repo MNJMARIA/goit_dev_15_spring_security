@@ -11,21 +11,30 @@
         <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">-->
     </head>
     <body>
+    <div class="container">
         <h1>Note List</h1>
-        <table>
+        <table class="table">
+            <thead>
             <tr>
                 <th>Title</th>
                 <th>Content</th>
                 <th>Actions</th>
             </tr>
-            <tr th:each="note : ${notes}">
-                <td th:text="${note.title}"></td>
-                <td th:text="${note.content}"></td>
+            </thead>
+            <tbody>
+            <!-- Loop through notes and display them -->
+            <!-- Replace this with actual data from your backend -->
+            <tr>
+                <td>Note 1 Title</td>
+                <td>Note 1 Content</td>
                 <td>
-                    <a th:href="@{/note/edit(id=${note.id})}">Edit</a>
-                    <a th:href="@{/note/delete(id=${note.id})}">Delete</a>
+                    <a href="/note/edit?id=1" class="btn btn-primary">Edit</a>
+                    <a href="/note/delete?id=1" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
+            <!-- Repeat the above block for each note -->
+            </tbody>
         </table>
+    </div>
     </body>
 </html>
