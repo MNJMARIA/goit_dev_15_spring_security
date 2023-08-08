@@ -27,9 +27,9 @@ public class NoteController {
     }
 
     @PostMapping(value = "/delete")
-    public String deleteById(@RequestParam(name = "id") long id){
+    public void deleteById(@RequestParam(name = "id") long id){
         noteService.deleteById(id);
-        return "redirect:/note/list";
+        //return "redirect:/note/list";
     }
 
     @GetMapping(value = "/edit")
