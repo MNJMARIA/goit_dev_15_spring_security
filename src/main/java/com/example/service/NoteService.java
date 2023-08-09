@@ -18,7 +18,7 @@ public class NoteService implements INoteService {
         // Generate a unique long value using UUID
         long id = new Random().nextLong();
         note.setId(id);
-        mapOfNotes.put(id, note);
+        mapOfNotes.put(note.getId(), note);
         return note; // Return the added note instead of the return value of put()
     }
 

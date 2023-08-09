@@ -22,6 +22,7 @@ public class NoteServiceTests {
         noteService = null;
     }
 
+
     @Test
     public void testCreateNoteWorksOk(){
         Note note = new Note();
@@ -34,8 +35,6 @@ public class NoteServiceTests {
         Assertions.assertEquals(note.getTitle(), createdNote.getTitle());
         Assertions.assertEquals(note.getContent(), createdNote.getContent());
 
-        // Clean up
-        //noteService.deleteById(createdNote.getId());
     }
 
     @Test
