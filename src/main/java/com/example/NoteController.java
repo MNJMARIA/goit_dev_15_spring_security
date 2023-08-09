@@ -18,11 +18,13 @@ public class NoteController {
     private static final Logger logger = LoggerFactory.getLogger(NoteService.class);
     private final  NoteService noteService;
 
+    @PostMapping(value = "/create")
+    public Note createNote(@RequestBody Note note){
+        return noteService.add(note);
+    }
+
     @GetMapping(value = "/list")
     public List<Note> getListOfNotes(){
-        /*ModelAndView result = new ModelAndView("note/list");
-        result.addObject("list", ); // Передача списку нотаток в модель
-        return result;*/
         return noteService.listAll();
     }
 
