@@ -50,6 +50,8 @@ public class NoteController {
         return ResponseEntity.ok(existingNote);
     }
 
+
+    //OR @PostMapping for update
     @PutMapping("/edit")
     public ResponseEntity<String> editNote(@RequestBody  Note note){
         Note existingNote = noteService.getById(note.getId());
