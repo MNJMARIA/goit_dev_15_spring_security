@@ -5,6 +5,7 @@ import com.example.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,19 +30,34 @@ public class NoteController {
     }
 
     @DeleteMapping(value = "/delete")
-    public void deleteById(@RequestParam(name = "id") long id){
+    public ResponseEntity<String> deleteById(@RequestParam(name = "id") long id){
+        Note existingNote = noteService.getById(id);
+        if(existingNote == null){
+            return ResponseEntity.notFound().build();
+        }
         noteService.deleteById(id);
+        return ResponseEntity.ok("Note deleted successfully");
         //return "redirect:/note/list";
     }
 
     @GetMapping(value = "/edit")
-    public Note editNote(@RequestParam(name = "id") long id){
+    public ResponseEntity<Note> editNote(@RequestParam(name = "id") long id){
         //another variant is to use: @PathVariable Long id
-        return noteService.getById(id);
+        Note existingNote = noteService.getById(id);
+        if (existingNote == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(existingNote);
     }
 
-    @PostMapping("/edit")
-    public void editNote(@RequestBody  Note note){
+    @PutMapping("/edit")
+    public ResponseEntity<String> editNote(@RequestBody  Note note){
+        Note existingNote = noteService.getById(note.getId());
+        if (existingNote == null) {
+            return ResponseEntity.notFound().build();
+        }
         noteService.update(note);
+        return ResponseEntity.ok("Note updated successfully");
+
     }
 }
