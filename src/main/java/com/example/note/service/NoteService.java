@@ -1,7 +1,7 @@
-package com.example.service;
+package com.example.note.service;
 
-import com.example.NoteRepository;
-import com.example.entity.Note;
+import com.example.note.Note;
+import com.example.note.NoteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

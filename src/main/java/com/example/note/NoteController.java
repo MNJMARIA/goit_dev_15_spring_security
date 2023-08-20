@@ -1,7 +1,7 @@
-package com.example;
+package com.example.note;
 
-import com.example.entity.Note;
-import com.example.service.NoteService;
+import com.example.note.Note;
+import com.example.note.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

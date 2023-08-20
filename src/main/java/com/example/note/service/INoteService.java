@@ -1,6 +1,6 @@
-package com.example.service;
+package com.example.note.service;
 
-import com.example.entity.Note;
+import com.example.note.Note;
 
 import java.util.List;
 
